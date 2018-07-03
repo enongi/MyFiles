@@ -1,0 +1,21 @@
+1、下载需要的Maven版本，解压到相应目录
+
+2、环境变量配置
+设置环境变量，首先我们设置Maven_HOME，它的值为Maven解压后的目录
+设置path环境变量，双击path环境变量的值，或者点击编辑按钮进入到编辑页面。
+点击新建按钮，添加%MAVEN_HOME%\bin即可，注意这里名字要和上一下设置一致
+环境变量设置完成后，我们查看本机是否成功安装了Maven，使用命令Win+R，
+输入cmd后回车，进入到命令行操作页面，输入mvn -v命令，如果显示Maven信息
+
+3、设置本地的maven仓库
+我们在解压后的目录下的apache-maven-3.5.3\conf找到settings.xml文件。
+若不设置则默认的路径为${user.home}/.m2/repository，由于我们是安装包直接解压的，
+因此在C:\Users\admin这个路径下并不存在有的文档所说的.m2文件，
+我们在命令行使用mvn help:system便会生成该文件夹并下载很多包，
+但是我们不需要这个操作哦，如果你执行的话看看文件下载到什么位置了，
+应该是上面默认的位置，此时可以将命令行页面关闭，并删除掉.m2文件夹。
+在修改settings.xml文件之前，我们选择一个磁盘创建我们Maven本地仓库的位置，
+如F:\Maven\repository。使用文本编辑工具如notepad++等或者windows自带的
+文本编辑器打开解压目录的apache-maven-3.5.3\conf（即解压后目录的conf目录）
+下的settings.xml文件，修改<localRepository>的设置，原来这部分设置是被注释掉的，
+我们将注释放开，并设置repository(本地仓库)的位置,即在settings.xml文件中设置的路径

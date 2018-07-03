@@ -1,0 +1,41 @@
+一、下载 
+进入官方下载链接https://dev.mysql.com/downloads/mysql/ 
+下载mysql-5.7.20-winx64.zip 或 mysql-5.7.20-winx32.zip文件 
+二、安装 
+2.1、将压缩文件放在目录C:\下（或者其它目录），解压。进入解压后的文件目录C:\mysql-5.7.20-winx64 ， 用文本编辑器新建文件my.ini ，文件内容如下
+#代码开始
+[Client]
+#设置3306端口
+port = 3306
+default-character-set=gbk
+[mysqld]
+#设置3306端口
+port = 3306
+# 设置mysql的安装目录
+basedir=C:\mysql-5.7.20-winx64
+# 设置mysql数据库的数据的存放目录
+datadir=C:\mysql-5.7.20-winx64\data
+# 允许最大连接数
+max_connections=200
+# 服务端使用的字符集默认为8比特编码的latin1字符集
+character-set-server=utf8
+# 创建新表时将使用的默认存储引擎
+default-storage-engine=INNODB
+default-character-set=gbk
+[mysql]
+default-character-set=utf8
+#代码结束
+其中basedir和datadir的值要根据自己安装目录修改
+2.2、配置环境变量： 
+新建系统变量 MYSQL_HOME ，并配置变量值为 C:\mysql-5.7.20-winx64 ； 
+编辑系统变量 Path ，将%MYSQL_HOME%\bin 追加到 Path 变量值后面。注意不是覆盖。
+2.3 
+以管理员身份运行cmd， 
+进入目录C:\mysql-5.7.20-winx64\bin ， 输入mysqld –defaults-file=my.ini –initialize-insecure，回车。这时会自动创建data目录。 
+输入mysqld –install，回车。这时会提示成功安装。 
+注意：此步骤如果没有提示安装成功，而是提示the service already exists! 这说明之前安装过MySQL，但是服务还未卸载，这时只要输入sc delete mysql ,回车，完成卸载服务即可。 
+三、启动服务 
+启动：net start mysql 
+停止：net stop mysql 
+注意：如果启动服务时提示：“发生系统错误 2”，则说明可能安装目录不对，这时进入bin目录，通过mysqld -remove 命令移除服务，再重输入命令mysqld -install，回车。 
+至此，MySQL安装完毕
