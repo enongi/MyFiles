@@ -1,21 +1,70 @@
-1��������Ҫ��Maven�汾����ѹ����ӦĿ¼
+﻿1、下载需要的Maven版本，解压到相应目录
 
-2��������������
-���û���������������������Maven_HOME������ֵΪMaven��ѹ���Ŀ¼
-����path����������˫��path����������ֵ�����ߵ���༭��ť���뵽�༭ҳ�档
-����½���ť������%MAVEN_HOME%\bin���ɣ�ע����������Ҫ����һ������һ��
-��������������ɺ����ǲ鿴�����Ƿ�ɹ���װ��Maven��ʹ������Win+R��
-����cmd��س������뵽�����в���ҳ�棬����mvn -v��������ʾMaven��Ϣ
+2、环境变量配置
+设置环境变量，首先我们设置Maven_HOME，它的值为Maven解压后的目录
+设置path环境变量，双击path环境变量的值，或者点击编辑按钮进入到编辑页面。
+点击新建按钮，添加%MAVEN_HOME%\bin即可，注意这里名字要和上一下设置一致
+环境变量设置完成后，我们查看本机是否成功安装了Maven，使用命令Win+R，
+输入cmd后回车，进入到命令行操作页面，输入mvn -v命令，如果显示Maven信息
 
-3�����ñ��ص�maven�ֿ�
-�����ڽ�ѹ���Ŀ¼�µ�apache-maven-3.5.3\conf�ҵ�settings.xml�ļ���
-����������Ĭ�ϵ�·��Ϊ${user.home}/.m2/repository�����������ǰ�װ��ֱ�ӽ�ѹ�ģ�
-�����C:\Users\admin���·���²��������е��ĵ���˵��.m2�ļ���
-������������ʹ��mvn help:system������ɸ��ļ��в����غܶ����
-�������ǲ���Ҫ�������Ŷ�������ִ�еĻ������ļ����ص�ʲôλ���ˣ�
-Ӧ��������Ĭ�ϵ�λ�ã���ʱ���Խ�������ҳ��رգ���ɾ����.m2�ļ��С�
-���޸�settings.xml�ļ�֮ǰ������ѡ��һ�����̴�������Maven���زֿ��λ�ã�
-��F:\Maven\repository��ʹ���ı��༭������notepad++�Ȼ���windows�Դ���
-�ı��༭���򿪽�ѹĿ¼��apache-maven-3.5.3\conf������ѹ��Ŀ¼��confĿ¼��
-�µ�settings.xml�ļ����޸�<localRepository>�����ã�ԭ���ⲿ�������Ǳ�ע�͵��ģ�
-���ǽ�ע�ͷſ���������repository(���زֿ�)��λ��,����settings.xml�ļ������õ�·��
+3、设置本地的maven仓库
+安装好maven之后，要想比较好地使用，目前其实还是存在很多问题的。 
+– 一般情况下，maven会自动将所下载的包放在~/.m2/repository/文件夹下，我们一般会自己定义一个文件夹，让maven的依赖包装在你所想要放在文件夹下，便于以后自己的维护和管理。 
+– maven自带的仓库是国外的maven官方的一个仓库http://repo1.maven.org/maven2/，一般不翻速度非常慢。
+
+因此，我们需要对setting.xml进行配置，达到我们上面的两个目的
+
+– 本地包位置的配置 
+打开your/path/to/maven/apache-maven-3.3.9/conf/setting.xml 
+加上这么一行代码，就设置好了本地仓库的位置
+<localRepository>
+   F:/your path /to your/maven repository
+</localRepository>
+这里记得写成绝对路径，你所下载的包就会放在你填写的目录下了
+
+4 仓库镜像的配置 
+
+在setting.xml中找到<mirrors>…………</mirrors>的位置。 
+
+在<mirrors>…………</mirrors>中间加入你想要的仓库的标签。 
+
+这里推荐几个国内网速比较快，资源比较全的仓库。 
+
+— 1.阿里云的maven仓库
+
+<mirror>  
+    
+  <id>alimaven</id>  
+    
+  <mirrorOf>central</mirrorOf>  
+    
+  <name>aliyun maven</name>  
+      <url>http://maven.aliyun.com/nexus/content/repositories/central/</url>  
+
+</mirror>
+— 2.开源中国的仓库
+
+<mirror>  
+ 
+   <id>nexus-osc</id>  
+ 
+   <mirrorOf>central</mirrorOf>  
+ 
+   <name>Nexus osc</name>  
+ 
+   <url>http://maven.oschina.net/content/groups/public/</url>  
+
+</mirror>  
+
+<mirror>  
+ 
+   <id>nexus-osc-thirdparty</id>  
+ 
+   <mirrorOf>thirdparty</mirrorOf>  
+ 
+   <name>Nexus osc thirdparty</name>  
+       <url>http://maven.oschina.net/content/repositories/thirdparty/</url>  
+
+</mirror>这两个国内的仓库，目前对我来说已经基本够用了。 
+
+保存好后，用mvn help:system 命令下载一些帮助文档的文件，也顺便测试测试刚刚配置的仓库镜像的速度。
