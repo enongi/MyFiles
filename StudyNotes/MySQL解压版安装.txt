@@ -1,41 +1,49 @@
-һ������ 
-����ٷ���������https://dev.mysql.com/downloads/mysql/ 
-����mysql-5.7.20-winx64.zip �� mysql-5.7.20-winx32.zip�ļ� 
-������װ 
-2.1����ѹ���ļ�����Ŀ¼C:\�£���������Ŀ¼������ѹ�������ѹ����ļ�Ŀ¼C:\mysql-5.7.20-winx64 �� ���ı��༭���½��ļ�my.ini ���ļ���������
-#���뿪ʼ
+一、下载 
+进入官方下载链接https://dev.mysql.com/downloads/mysql/ 
+下载mysql-5.7.20-winx64.zip 或 mysql-5.7.20-winx32.zip文件 
+二、安装 
+2.1、将压缩文件放在目录C:\下（或者其它目录），解压。进入解压后的文件目录C:\mysql-5.7.20-winx64 ， 用文本编辑器新建文件my.ini ，文件内容如下
+#代码开始
 [Client]
-#����3306�˿�
+#设置3306端口
 port = 3306
 default-character-set=gbk
 [mysqld]
-#����3306�˿�
+#设置3306端口
 port = 3306
-# ����mysql�İ�װĿ¼
+# 设置mysql的安装目录
 basedir=C:\mysql-5.7.20-winx64
-# ����mysql���ݿ�����ݵĴ��Ŀ¼
+# 设置mysql数据库的数据的存放目录
 datadir=C:\mysql-5.7.20-winx64\data
-# �������������
+# 允许最大连接数
 max_connections=200
-# �����ʹ�õ��ַ���Ĭ��Ϊ8���ر����latin1�ַ���
+# 服务端使用的字符集默认为8比特编码的latin1字符集
 character-set-server=utf8
-# �����±�ʱ��ʹ�õ�Ĭ�ϴ洢����
+# 创建新表时将使用的默认存储引擎
 default-storage-engine=INNODB
 default-character-set=gbk
 [mysql]
 default-character-set=utf8
-#�������
-����basedir��datadir��ֵҪ�����Լ���װĿ¼�޸�
-2.2�����û��������� 
-�½�ϵͳ���� MYSQL_HOME �������ñ���ֵΪ C:\mysql-5.7.20-winx64 �� 
-�༭ϵͳ���� Path ����%MYSQL_HOME%\bin ׷�ӵ� Path ����ֵ���档ע�ⲻ�Ǹ��ǡ�
+#代码结束
+其中basedir和datadir的值要根据自己安装目录修改
+2.2、配置环境变量： 
+新建系统变量 MYSQL_HOME ，并配置变量值为 C:\mysql-5.7.20-winx64 ； 
+编辑系统变量 Path ，将%MYSQL_HOME%\bin 追加到 Path 变量值后面。注意不是覆盖。
 2.3 
-�Թ���Ա��������cmd�� 
-����Ŀ¼C:\mysql-5.7.20-winx64\bin �� ����mysqld �Cdefaults-file=my.ini �Cinitialize-insecure���س�����ʱ���Զ�����dataĿ¼�� 
-����mysqld �Cinstall���س�����ʱ����ʾ�ɹ���װ�� 
-ע�⣺�˲������û����ʾ��װ�ɹ���������ʾthe service already exists! ��˵��֮ǰ��װ��MySQL�����Ƿ���δж�أ���ʱֻҪ����sc delete mysql ,�س������ж�ط��񼴿ɡ� 
-������������ 
-������net start mysql 
-ֹͣ��net stop mysql 
-ע�⣺�����������ʱ��ʾ��������ϵͳ���� 2������˵�����ܰ�װĿ¼���ԣ���ʱ����binĿ¼��ͨ��mysqld -remove �����Ƴ�����������������mysqld -install���س��� 
-���ˣ�MySQL��װ���
+以管理员身份运行cmd， 
+进入目录C:\mysql-5.7.20-winx64\bin ， 输入mysqld –defaults-file=my.ini –initialize-insecure，回车。这时会自动创建data目录。 
+输入mysqld –install，回车。这时会提示成功安装。 
+注意：此步骤如果没有提示安装成功，而是提示the service already exists! 这说明之前安装过MySQL，但是服务还未卸载，这时只要输入sc delete mysql ,回车，完成卸载服务即可。 
+三、启动服务 
+启动：net start mysql 
+停止：net stop mysql 
+注意：如果启动服务时提示：“发生系统错误 2”，则说明可能安装目录不对，这时进入bin目录，通过mysqld -remove 命令移除服务，再重输入命令mysqld -install，回车。 
+如果提示：服务正在启动 . MySQL 服务无法启动。  服务没有报告任何错误
+1．删除data文件夹，、
+2．用管理员权限运行cmd,执行D:\Program Files\MySQL\MySQL Server 5.7\bin>mysqld -install
+得到提示：Service successfully installed. 
+（可跳过这一步）
+3.执行D:\Program Files\MySQL\MySQL Server 5.7\bin>mysqld  --initialize
+4.运行mysql: net start mysql
+如果提示：发生系统错误 5 则说明命令行不是管理员身份运行，以管理员身份运行重新启动即可
+至此，MySQL安装完毕
