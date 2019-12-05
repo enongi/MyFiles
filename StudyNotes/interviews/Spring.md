@@ -22,11 +22,12 @@
 ### spring的核心
 
 【参考：https://www.cnblogs.com/dandelZH/p/9038724.html】
-1、控制反转 （Inverse of Control ,IOC）依赖注入（Dependency Injection, DI）
-	通常程序功能的实现由两个或多个对象共同协调完成，通过DI，对象的依赖关系将由系统中负责协调各对象的第三方组件在创建对象的时候进行设定
-	对象无需自行创建或管理他们的依赖关系
-	依赖注入将对象所依赖的关系自动交给目标对象，而不是由对象自己去获取依赖，这样达到了松耦合的目的
-	依赖注入的方式：
+
+#### 控制反转-依赖注入
+
+控制反转 （Inverse of Control ,IOC）依赖注入（Dependency Injection, DI）
+通常程序功能的实现由两个或多个对象共同协调完成，通过DI，对象的依赖关系将由系统中负责协调各对象的第三方组件在创建对象的时候进行设定，对象无需自行创建或管理他们的依赖关系，依赖注入将对象所依赖的关系自动交给目标对象，而不是由对象自己去获取依赖，这样达到了松耦合的目的
+依赖注入的方式：
 		构造器注入
 		属性注入
 		字段注入（注解注入）
@@ -38,7 +39,6 @@
 　　　　3）AnnotationConfigWebApplicationContext
 　　　　4）FileSystemXmlApplicationContext
 　　　　5）XmlWebApplicationContext　　
-
 装配bean
 
   　　1. Spring装配bean的三种方案（按建议的优先使用顺序）：
@@ -46,7 +46,7 @@
               　　　　2） 通过Java代码配置
               　　　　3） 通过XML配置
               　　以上三种配置方案，建议尽可能地使用自动化配置的机制，显示配置越少越好。
-        　　2. 自动化装配bean
+                　　2. 自动化装配bean
               　　2.1 Spring从两个角度来实现自动化装配
                      　　　　　　1） 组件扫描：Spring会自动发现应用上下文中所创建的bean。
                      　　　　　　2） 自动装配：Spring自动满足bean之间的依赖。
@@ -61,37 +61,97 @@
                             　　　　　　1） 创建配置类：使用 @Configuration注解声明类为配置类。
                             　　　　　　2） 声明bean：  使用 @Bean注解在JavaConfig配置类中声明bean。 
 
-                　　4. 通过XML装配bean
-                            　　1） 创建XML文件，并以<bean>元素为根，在XML配置文件的顶部需要引入多个XML模式（XSD文件），这些文件定义了配置Spring的XML元素。
-                                   　　　　　　建议使用Spring Tool Suite插件，通过File->new->Spring Bean Configuration File ，能够创建Spring XML配置文件，并可以选择可用的配置命名空间（如aop）。
-                                   　　　　2） 使用<bean>元素声明bean
-                                   　　　　3） 使用<constructor-arg>元素或c-命名空间的<c:_ref=""/>借助构造器注入依赖。
-                                   　　　　4） 使用<property>元素或p-命名空间的<p:name-ref=""/>装配属性。
-       2、面向切面编程（Aspect-Oriented Programming, AOP）
-       在软件开发中，散布于应用中多处的功能被称为横切关注点。通常来讲，这些横切关注点从概念上是与应用的业务逻辑相分离的，把这些横切关注点与业务逻辑相分离、实现横切关注点和它们所影响的对象之间的解耦正是面向切面编程（AOP）要解决的问题。
-          　　5. 定义AOP术语
-       　　1）通知（Advice）
-       　　　　　　通知定义了切面是什么及何时使用。
-       　　　　　　通知有5种类型：
-       　　　　　　　　前置通知（Before）
-       　　　　　　　　后置通知（After）
-       　　　　　　　　环绕通知（Around）
-       　　　　　　　　返回通知（After-returning）
-       　　　　　　　　异常通知（After-throwing）
-       　　　　2）连接点（Join-point）
-       　　　　　　连接点是应用执行过程中能够插入切面的一个点。
-       　　　　3）切点（PoinCut）
-       　　　　　　切点定义了何处使用。切点的定义会匹配通知所要织入的一个或多个连接点。
-       　　　　4）切面（Aspect）
-       　　　　　　切面是通知和切点的结合，通知和切点共同定义了切面的全部内容-它是什么，在何时和何处完成其功能。
-       　　　　5）引入（Intriduction）
-       　　　　　　引入允许我们在无需修改现有类的情况下，向现有的类添加新方法或属性，使它们具有新的行为和属性。
-       　　　　6）织入（Weaving）
-       　　　　　　织入是把切面应用到目标对象并创建新的代理对象的过程，切面在指定的连接点被织入到目标对象。
-       　　　　　　在目标对象的生命周期有多个点可以织入：
-       　　　　　　　　编译期
-       　　　　　　　　类加载期
-       　　　　　　　　运行期
+             4. 通过XML装配bean
+                   1） 创建XML文件，并以<bean>元素为根，在XML配置文件的顶部需要引入多个XML模式（XSD文件），这些文件定义了配置Spring的XML元素。
+                     　　　　　　建议使用Spring Tool Suite插件，通过File->new->Spring Bean Configuration File ，能够创建Spring XML配置文件，并可以选择可用的配置命名空间（如aop）。
+                     　　　　2） 使用<bean>元素声明bean
+                     　　　　3） 使用<constructor-arg>元素或c-命名空间的<c:_ref=""/>借助构造器注入依赖。
+                     　　　　4） 使用<property>元素或p-命名空间的<p:name-ref=""/>装配属性。
+       
+                2、面向切面编程（Aspect-Oriented Programming, AOP）
+                在软件开发中，散布于应用中多处的功能被称为横切关注点。通常来讲，这些横切关注点从概念上是与应用的业务逻辑相分离的，把这些横切关注点与业务逻辑相分离、实现横切关注点和它们所影响的对象之间的解耦正是面向切面编程（AOP）要解决的问题。
+                   　　5. 定义AOP术语
+                　　1）通知（Advice）
+                　　　　　　通知定义了切面是什么及何时使用。
+                　　　　　　通知有5种类型：
+                　　　　　　　　前置通知（Before）
+                　　　　　　　　后置通知（After）
+                　　　　　　　　环绕通知（Around）
+                　　　　　　　　返回通知（After-returning）
+                　　　　　　　　异常通知（After-throwing）
+                　　　　2）连接点（Join-point）
+                　　　　　　连接点是应用执行过程中能够插入切面的一个点。
+                　　　　3）切点（PoinCut）
+                　　　　　　切点定义了何处使用。切点的定义会匹配通知所要织入的一个或多个连接点。
+                　　　　4）切面（Aspect）
+                　　　　　　切面是通知和切点的结合，通知和切点共同定义了切面的全部内容-它是什么，在何时和何处完成其功能。
+                　　　　5）引入（Intriduction）
+                　　　　　　引入允许我们在无需修改现有类的情况下，向现有的类添加新方法或属性，使它们具有新的行为和属性。
+                　　　　6）织入（Weaving）
+                　　　　　　织入是把切面应用到目标对象并创建新的代理对象的过程，切面在指定的连接点被织入到目标对象。
+                　　　　　　在目标对象的生命周期有多个点可以织入：
+                　　　　　　　　编译期
+                　　　　　　　　类加载期
+
+         　　　　　　　　运行期
+	
+	         Spring装配bean的三种方案（按建议的优先使用顺序）：
+	         　　 1） 自动化装配
+	         　　 2） 通过Java代码配置
+	         　　 3） 通过XML配置
+
+以上三种配置方案，建议尽可能地使用自动化配置的机制，显式配置越少越好。
+
+**自动化装配bean**
+Spring从两个角度来实现自动化装配
+         1） 组件扫描：Spring会自动发现应用上下文中所创建的bean。
+         2） 自动装配：Spring自动满足bean之间的依赖。
+Spring自动化装配主要使用的注解：
+        1） @Component：标志要创建的bean
+         2） @ComponentScan：启用组件扫描
+         3)  @AutoWired：将bean的依赖注入。( 也可用源于Java依赖注入规范的 @Inject注解)　
+
+**通过Java代码装配bean**
+尽管在很多场景下通过组件扫描和自动装配来实现Spring的自动化配置时更为推荐的方式，但是在如使用第三方库中的组件（因为自动化配置需要将注解写到具体的类上，而第三方库的类都是封装、编译的），这时就可以使Java配置。
+通过Java显式配置Spring：
+     　1） 创建配置类：使用 @Configuration注解声明类为配置类。
+     　2） 声明bean：  使用 @Bean注解在JavaConfig配置类中声明bean。 
+
+**通过XML装配bean**
+  　　1） 创建XML文件，并以<bean>元素为根，在XML配置文件的顶部需要引入多个XML模式（XSD文件），这些文件定义了配置Spring的XML元素。
+         建议使用Spring Tool Suite插件，通过File->new->Spring Bean Configuration File ，能够创建Spring XML配置文件，并可以选择可用的配置命名空间（如aop）。
+         2） 使用<bean>元素声明bean
+         3） 使用<constructor-arg>元素或c-命名空间的<c:_ref=""/>借助构造器注入依赖。
+         4） 使用<property>元素或p-命名空间的<p:name-ref=""/>装配属性。
+
+#### 面向切面编程
+
+面向切面编程（Aspect-Oriented Programming, AOP）
+在软件开发中，散布于应用中多处的功能被称为横切关注点。通常来讲，这些横切关注点从概念上是与应用的业务逻辑相分离的，把这些横切关注点与业务逻辑相分离、实现横切关注点和它们所影响的对象之间的解耦正是面向切面编程（AOP）要解决的问题。
+
+定义AOP术语
+1）通知（Advice）
+　　通知定义了切面是什么及何时使用。
+　　通知有5种类型：
+　　　　前置通知（Before）
+　　　　后置通知（After）
+　　　　环绕通知（Around）
+　　　　返回通知（After-returning）
+　　　　异常通知（After-throwing）
+2）连接点（Join-point）
+　　连接点是应用执行过程中能够插入切面的一个点。
+3）切点（PoinCut）
+　　切点定义了何处使用。切点的定义会匹配通知所要织入的一个或多个连接点。
+4）切面（Aspect）
+　　切面是通知和切点的结合，通知和切点共同定义了切面的全部内容-它是什么，在何时和何处完成其功能。
+5）引入（Intriduction）
+　　引入允许我们在无需修改现有类的情况下，向现有的类添加新方法或属性，使它们具有新的行为和属性。
+6）织入（Weaving）
+　　织入是把切面应用到目标对象并创建新的代理对象的过程，切面在指定的连接点被织入到目标对象。
+　　在目标对象的生命周期有多个点可以织入：
+　　　　编译期
+　　　　类加载期
+　　　　运行期
 
 依赖倒置原则（Dependency Inverse Principle）
 
@@ -110,7 +170,7 @@ ApplicationContext 容器包括 BeanFactory 容器的所有功能，所以通常
 
 #### BeanFactory 容器
 
-这是一个最简单的容器，它主要的功能是为依赖注入 （DI） 提供支持，这个容器接口在 org.springframework.beans.factory.BeanFactor 中被定义。 BeanFactory 和相关的接口，比如BeanFactoryAware、 DisposableBean、InitializingBean，仍旧保留在 Spring 中，主要目的是向后兼容已经存在的和那些 Spring 整合在一起的第三方框架。
+这是一个最简单的容器，它主要的功能是为依赖注入 （DI） 提供支持，这个容器接口在 org.springframework.beans.factory.BeanFactory 中被定义。 BeanFactory 和相关的接口，比如BeanFactoryAware、 DisposableBean、InitializingBean，仍旧保留在 Spring 中，主要目的是向后兼容已经存在的和那些 Spring 整合在一起的第三方框架。
 
 在 Spring 中，有大量对 BeanFactory 接口的实现。其中，最常被使用的是 XmlBeanFactory 类。这个容器从一个 XML 文件中读取配置元数据，由这些元数据来生成一个被配置化的系统或者应用。
 
@@ -123,7 +183,7 @@ ApplicationContext 容器包括 BeanFactory 容器的所有功能，所以通常
 
 #### ApplicationContext 容器
 
-Application Context 是 spring 中较高级的容器。和 BeanFactory 类似，它可以加载配置文件中定义的 bean，将所有的 bean 集中在一起，当有请求的时候分配 bean。 另外，它增加了企业所需要的功能，比如，从属性文件中解析文本信息和将事件传递给所指定的监听器。这个容器在 org.springframework.context.ApplicationContext interface 接口中定义。
+ApplicationContext 是 spring 中较高级的容器。和 BeanFactory 类似，它可以加载配置文件中定义的 bean，将所有的 bean 集中在一起，当有请求的时候分配 bean。 另外，它增加了企业所需要的功能，比如，从属性文件中解析文本信息和将事件传递给所指定的监听器。这个容器在 org.springframework.context.ApplicationContext interface 接口中定义。
 
 ApplicationContext 包含 BeanFactory 所有的功能，一般情况下，相对于 BeanFactory，ApplicationContext 会更加优秀。当然，BeanFactory 仍可以在轻量级应用中使用，比如移动设备或者基于 applet 的应用程序。
 
@@ -240,8 +300,7 @@ BeanFactory和ApplicationContext是Spring的两大核心接口，都可以当做
 	提供在监听器中注册bean的事件
 		ApplicationContext的事件机制主要通过ApplicationEvent和ApplicationListener这两个接口来提供的，和java swing中的事件机制一样。即当ApplicationContext中发布一个事件的时，所有扩展了ApplicationListener的Bean都将会接受到这个事件，并进行相应的处理。
 		Spring提供了部分内置事件，主要有以下几种：
-			ContextRefreshedEvent ：ApplicationContext发送该事件时，表示该容器中所有的Bean都已经被装载完成，
-			此ApplicationContext已就绪可用
+			ContextRefreshedEvent ：ApplicationContext发送该事件时，表示该容器中所有的Bean都已经被装载完成，此ApplicationContext已就绪可用
 			ContextStartedEvent：生命周期 beans的启动信号
 			ContextStoppedEvent: 生命周期 beans的停止信号
 			ContextClosedEvent：ApplicationContext关闭事件，则context不能刷新和重启，
