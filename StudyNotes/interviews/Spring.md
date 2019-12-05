@@ -46,7 +46,7 @@
               　　　　2） 通过Java代码配置
               　　　　3） 通过XML配置
               　　以上三种配置方案，建议尽可能地使用自动化配置的机制，显示配置越少越好。
-    　　2. 自动化装配bean
+        　　2. 自动化装配bean
               　　2.1 Spring从两个角度来实现自动化装配
                      　　　　　　1） 组件扫描：Spring会自动发现应用上下文中所创建的bean。
                      　　　　　　2） 自动装配：Spring自动满足bean之间的依赖。
@@ -54,14 +54,14 @@
                      　　　　　　1） @Component：标志要创建的bean
                      　　　　　　2） @ComponentScan：启用组件扫描
                      		3)  @AutoWired：将bean的依赖注入。( 也可用源于Java依赖注入规范的 @Inject注解)　
-      　　3. 通过Java代码装配bean
+            　　3. 通过Java代码装配bean
                      　　尽管在很多场景下通过组件扫描和自动装配来实现Spring的自动化配置时更为推荐的方式，
                             	但是在如使用第三方库中的组件（因为自动化配置需要将注解写到具体的类上，而第三方库的类都是封装、编译的），这时就可以使用Java配置。
                             　　　　通过Java显示配置Spring：
                             　　　　　　1） 创建配置类：使用 @Configuration注解声明类为配置类。
                             　　　　　　2） 声明bean：  使用 @Bean注解在JavaConfig配置类中声明bean。 
 
-        　　4. 通过XML装配bean
+                　　4. 通过XML装配bean
                             　　1） 创建XML文件，并以<bean>元素为根，在XML配置文件的顶部需要引入多个XML模式（XSD文件），这些文件定义了配置Spring的XML元素。
                                    　　　　　　建议使用Spring Tool Suite插件，通过File->new->Spring Bean Configuration File ，能够创建Spring XML配置文件，并可以选择可用的配置命名空间（如aop）。
                                    　　　　2） 使用<bean>元素声明bean
