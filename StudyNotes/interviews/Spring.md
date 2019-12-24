@@ -43,64 +43,32 @@
 
   　　1. Spring装配bean的三种方案（按建议的优先使用顺序）：
        　　1） 自动化装配
-              　　　　2） 通过Java代码配置
-              　　　　3） 通过XML配置
-              　　以上三种配置方案，建议尽可能地使用自动化配置的机制，显示配置越少越好。
-                　　2. 自动化装配bean
+         2） 通过Java代码配置
+         3） 通过XML配置
+         以上三种配置方案，建议尽可能地使用自动化配置的机制，显示配置越少越好。
+         
+  　　2. 自动化装配bean
               　　2.1 Spring从两个角度来实现自动化装配
-                     　　　　　　1） 组件扫描：Spring会自动发现应用上下文中所创建的bean。
-                     　　　　　　2） 自动装配：Spring自动满足bean之间的依赖。
-                     　　　　2.2 Spring自动化装配主要使用的注解：
-                     　　　　　　1） @Component：标志要创建的bean
-                     　　　　　　2） @ComponentScan：启用组件扫描
+                     　　1） 组件扫描：Spring会自动发现应用上下文中所创建的bean。
+                     　　2） 自动装配：Spring自动满足bean之间的依赖。
+                     2.2 Spring自动化装配主要使用的注解：
+                     　　1） @Component：标志要创建的bean
+                     　　2） @ComponentScan：启用组件扫描
                      		3)  @AutoWired：将bean的依赖注入。( 也可用源于Java依赖注入规范的 @Inject注解)　
-            　　3. 通过Java代码装配bean
-                     　　尽管在很多场景下通过组件扫描和自动装配来实现Spring的自动化配置时更为推荐的方式，
-                            	但是在如使用第三方库中的组件（因为自动化配置需要将注解写到具体的类上，而第三方库的类都是封装、编译的），这时就可以使用Java配置。
-                            　　　　通过Java显示配置Spring：
-                            　　　　　　1） 创建配置类：使用 @Configuration注解声明类为配置类。
-                            　　　　　　2） 声明bean：  使用 @Bean注解在JavaConfig配置类中声明bean。 
 
-             4. 通过XML装配bean
-                   1） 创建XML文件，并以<bean>元素为根，在XML配置文件的顶部需要引入多个XML模式（XSD文件），这些文件定义了配置Spring的XML元素。
-                     　　　　　　建议使用Spring Tool Suite插件，通过File->new->Spring Bean Configuration File ，能够创建Spring XML配置文件，并可以选择可用的配置命名空间（如aop）。
-                     　　　　2） 使用<bean>元素声明bean
-                     　　　　3） 使用<constructor-arg>元素或c-命名空间的<c:_ref=""/>借助构造器注入依赖。
-                     　　　　4） 使用<property>元素或p-命名空间的<p:name-ref=""/>装配属性。
-       
-                2、面向切面编程（Aspect-Oriented Programming, AOP）
-                在软件开发中，散布于应用中多处的功能被称为横切关注点。通常来讲，这些横切关注点从概念上是与应用的业务逻辑相分离的，把这些横切关注点与业务逻辑相分离、实现横切关注点和它们所影响的对象之间的解耦正是面向切面编程（AOP）要解决的问题。
-                   　　5. 定义AOP术语
-                　　1）通知（Advice）
-                　　　　　　通知定义了切面是什么及何时使用。
-                　　　　　　通知有5种类型：
-                　　　　　　　　前置通知（Before）
-                　　　　　　　　后置通知（After）
-                　　　　　　　　环绕通知（Around）
-                　　　　　　　　返回通知（After-returning）
-                　　　　　　　　异常通知（After-throwing）
-                　　　　2）连接点（Join-point）
-                　　　　　　连接点是应用执行过程中能够插入切面的一个点。
-                　　　　3）切点（PoinCut）
-                　　　　　　切点定义了何处使用。切点的定义会匹配通知所要织入的一个或多个连接点。
-                　　　　4）切面（Aspect）
-                　　　　　　切面是通知和切点的结合，通知和切点共同定义了切面的全部内容-它是什么，在何时和何处完成其功能。
-                　　　　5）引入（Intriduction）
-                　　　　　　引入允许我们在无需修改现有类的情况下，向现有的类添加新方法或属性，使它们具有新的行为和属性。
-                　　　　6）织入（Weaving）
-                　　　　　　织入是把切面应用到目标对象并创建新的代理对象的过程，切面在指定的连接点被织入到目标对象。
-                　　　　　　在目标对象的生命周期有多个点可以织入：
-                　　　　　　　　编译期
-                　　　　　　　　类加载期
+   3. 通过Java代码装配bean
+         在很多场景下通过组件扫描和自动装配来实现Spring的自动化配置时更为推荐的方式，但是在如使用第三方库中的组件（因为自动化配置需要将注解写到具体的类上，而第三方库的类都是封装、编译的），这时就可以使用Java配置。
+         通过Java显示配置Spring：
+             　1） 创建配置类：使用 @Configuration注解声明类为配置类。
+             　2） 声明bean：  使用 @Bean注解在JavaConfig配置类中声明bean。 
 
-         　　　　　　　　运行期
-	
-	         Spring装配bean的三种方案（按建议的优先使用顺序）：
-	         　　 1） 自动化装配
-	         　　 2） 通过Java代码配置
-	         　　 3） 通过XML配置
+   4. 通过XML装配bean
 
-以上三种配置方案，建议尽可能地使用自动化配置的机制，显式配置越少越好。
+         1） 创建XML文件，并以<bean>元素为根，在XML配置文件的顶部需要引入多个XML模式（XSD文件），这些文件定义了配置Spring的XML元素。
+           　　　　　　建议使用Spring Tool Suite插件，通过File->new->Spring Bean Configuration File ，能够创建Spring XML配置文件，并可以选择可用的配置命名空间（如aop）。
+           　　　　2） 使用<bean>元素声明bean
+           　　　　3） 使用<constructor-arg>元素或c-命名空间的<c:_ref=""/>借助构造器注入依赖。
+           　　　　4） 使用<property>元素或p-命名空间的<p:name-ref=""/>装配属性。
 
 **自动化装配bean**
 Spring从两个角度来实现自动化装配

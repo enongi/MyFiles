@@ -10,6 +10,9 @@ incompatible 英 [ˌɪnkəmˈpætəbl]   美 [ˌɪnkəmˈpætəbl]
 adj.(与某事物)不一致，不相配;(与某人)合不来，不能和睦相处;(与某物)不匹配;配伍禁忌的;
 不兼容;互斥的派生词： incompatibility n.
 
+compatibility 英 [kəmˌpætəˈbɪləti]   美 [kəmˌpætəˈbɪləti]  
+n.和睦相处;并存;相容;(尤指计算机及程序的)兼容性，相容性
+
 permit 英 [pəˈmɪt , ˈpɜːmɪt]   美 [pərˈmɪt , ˈpɜːrmɪt]  
 v. 允许;准许;使有可能
 n. 许可证，特许证(尤指限期的)
@@ -91,6 +94,9 @@ corresponding 英 [ˌkɒrəˈspɒndɪŋ]   美 [ˌkɔːrəˈspɑːndɪŋ]
 adj. 符合的;相应的;相关的
 v. 相一致;符合;类似于;相当于;通信
 correspond的现在分词
+
+previous 英 [ˈpriːviəs]   美 [ˈpriːviəs]  
+adj.先前的;以往的;(时间上)稍前的
 
 previously 英 [ˈpriːviəsli]   美 [ˈpriːviəsli]  
 adv. 先前;以前;(一段时间)以前
@@ -220,3 +226,13 @@ n. 传播;扩展;宣传;培养
 mandatory 英 [ˈmændətəri]   美 [ˈmændətɔːri]  
 adj. 强制的;法定的;义务的
 n. 受托者
+
+optional 英 [ˈɒpʃənl]   美 [ˈɑːpʃənl]  
+adj.可选择的;选修的  optionally adv.随意地
+
+specify 英 [ˈspesɪfaɪ]   美 [ˈspesɪfaɪ]  
+v. 具体说明;明确规定;详述;详列
+
+hint 英 [hɪnt]   美 [hɪnt]  
+n.暗示;提示;示意;征兆;迹象;少许;少量
+v.暗示;透露;示意
