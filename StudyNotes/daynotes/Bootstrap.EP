@@ -1,0 +1,220 @@
+Bootstrap 排版
+.lead 使段落突出显示
+.small 设置小文本（设置为父文本的85%大小）
+.text-left 设定文本左对齐
+.text-center 设定文本居中对齐
+.text-right 设定文本右对齐
+.text-justify 设定文本对齐，段落中超出屏幕的部分自动换行
+.text-nowrap 段落中超出屏幕部分不换行
+.text-lowercase 设定文本小写
+.text-uppercase 设定文本大写
+.text-capitalize 设定文本首字母大写
+.initialism 显示在<abbr>中的文本以小号字体展示
+.blockquote-reverse 设定引用右对齐
+.list-unstyled 移除默认的列表样式，列表项中左对齐 ( <ul> 和 <ol> 中)。 这个类仅适用于直接子列表项    (如果需要移除嵌套的列表项，你需要在嵌套的列表中使用该样式)
+.list-inline 将所有列表项显示在同一行
+.dl-horizontal 该类设置了浮动和偏移，应用于 <dl> 元素和 <dt> 元素中，具体实现可以查看实例
+.pre-scrollable 使 <pre> 元素可滚动 scrollable
+
+Bootstrap表格
+表格标签
+<table> 为表格添加基本样式
+<thead> 表格标题行的容器元素(<tr>)，用来标识表格列
+<tbody> 表格主体中的表格行的容器元素(<tr>)
+<tr> 一组出现在一行上的表格单元格的容器元素(<td>,<th>)
+<td> 默认的表格单元格
+<th> 特殊的单元格，用来标识列或者行（取决于范围和位置），必须在<thead>中使用
+<caption> 关于表格存储内容的描述或者总结
+
+表格类
+.table 为任意<table>添加基本样式（只有横向分割线）
+.table-striped 在<tboday>中添加类似于斑马线的条纹
+.table-bordered 为所有表格的单元格添加边框
+.table-hover <tbody>内任意一行启用鼠标悬停状态
+.table-condensed 让表格更加紧凑
+以上类用于表格中
+
+以下类可用于表格的行或者单元格
+.active  将鼠标悬停的颜色应用在行或者单元格
+.success 表示成功操作
+.info 表示信息变化的操作
+.warning 表示一个警告的操作
+.danger 表示一个危险的操作
+Bootstrap按钮
+下面样式可以应用到<a>,<button>或<input>元素上
+.btn 为按钮添加基本样式
+.btn-default 默认/标准按钮
+.btn-primary 原始按钮样式（未被操作）
+.btn-success 表示成功的动作
+.btn-info 该样式可以用于要弹出信息的按钮
+.btn-warning 表示需要谨慎操作的按钮
+.btn-danger 表示一个危险动作的按钮
+.btn-link 让按钮看起来像一个链接（仍保留原按钮功能）
+.btn-lg 制作一个大按钮
+.btn-sm 制作一个小按钮
+.btn-xs 制作一个超小按钮
+.btn-block 块级按钮（拉伸至父元素100%的宽度）
+.active 按钮被点击
+.disabled 禁用按钮
+
+Bootstrap图片
+<img>类，以下类可以用于任何图片中
+.img-rounded 为图片添加圆角
+.img-circle 将图片变为圆形
+.img-thumbnail 缩略图功能
+.img-responsive 图片响应式（将更好的扩展到元素）
+
+Bootstrap辅助类
+文本，以下不同类展示了不同的文本颜色，如果文本是个链接文本颜色会变暗
+.text-muted  “text-muted” 类的文本样式
+.text-primary  “text-primary” 类的文本样式
+.text-success  “text-success” 类的文本样式
+.text-info  “text-info” 类的文本样式
+.text-warning  “text-warning” 类的文本样式
+.text-danger  “text-danger”类的文本样式
+
+背景,以下不同的类展示了不同的背景颜色。 如果文本是个链接鼠标移动到文本上会变暗：
+.bg-primary  表格单元格使用了 "bg-primary" 类
+.bg-success  表格单元格使用了 "bg-success" 类
+.bg-info  表格单元格使用了 "bg-info" 类
+.bg-warning  表格单元格使用了 "bg-warning" 类
+.bg-danger  表格单元格使用了 "bg-danger" 类
+
+其他
+.pull-left 元素浮动到左边
+.Pull-right 元素浮动到右边
+.center-block 设置元素为display:block,并居中显示
+.clearfix 清除浮动
+.show 强制元素显示
+.hidden 强制元素隐藏
+.sr-only 除了屏幕阅读器外，其他设备上隐藏元素
+.sr-only-focusable 与.sr-only 配合使用，在元素获取焦点时显示
+.text-hide 将页面包含的所有文本内容替换为背景图
+.close 显示关闭按钮
+.caret 显示下拉式功能
+
+Bootstrap字体图标
+字体图标实在web项目中使用的图标字体
+如需使用图标，只需简单的使用下面的代码即可，请在图标和文本之间适当的保留空间
+<span class=”glyphicon glyphicon-search”></span>
+
+Bootstrap下拉菜单
+如需使用下拉菜单，只需要在class.dropdown内加上下拉菜单即可
+可以使用class.dropdown-header 像下拉菜单的标签区域添加标题
+上拉菜单class.dropup
+
+Bootstrap按钮组
+.btn-group 该class用于形成基本的按钮组 ，在.btn-group中放置一系列带有 class.btn的按钮
+.btn-toolbar 该 class 有助于把几组 <div class="btn-group"> 结合到一个 <div class="btn-toolbar"> 中，一般获得更复杂的组件。
+.btn-group-lg, .btn-group-sm, .btn-group-xs 这些class可以应用到整个按钮组的大小调整，不用对每个按钮进行大小调整
+.btn-group-vertical 该class让一组按钮垂直堆叠显示
+
+Bootstrap输入框组
+使用输入框组，可以很容易的向基于文本的输入框添加作为前缀和后缀的文本或按钮
+向 .form-control添加前缀或后缀的步骤：
+	把前缀或后缀元素放在一个带有class.input-group的div中
+	接着，在相同的div内，在class为.input-group-addon的<span>内放置额外的内容
+	把该<span>放置在<input>元素前面或者后面
+为了保持跨浏览器的兼容性，请避免使用 <select> 元素，因为它们在 WebKit 浏览器中不能完全渲染出效果。也不要直接向表单组应用输入框组的 class，输入框组是一个孤立的组件
+输入框组的大小
+您可以通过向 .input-group 添加相对表单大小的 class（比如 .input-group-lg、input-group-sm、input-group-xs）来改变输入框组的大小。输入框中的内容会自动调整大小
+
+复选框和单选插件
+您可以把复选框和单选插件作为输入框组的前缀或者后缀元素
+	<div class="input-group">
+	   <span class="input-group-addon">
+			<input type="checkbox">
+	   </span>
+	   <input type="text" class="form-control">
+	</div><!-- /input-group -->
+
+	<div class="input-group">
+		<span class="input-group-addon">
+		  <input type="radio">
+		</span>
+		<input type="text" class="form-control">
+	</div><!-- /input-group -->
+
+按钮插件
+您也可以把按钮作为输入框组的前缀或者后缀元素，这个时候您就不是添加 .input-group-addon class，您需要使用 class .input-group-btn 来包裹按钮。这是必需的，因为默认的浏览器样式不会被重写
+<div class="input-group">
+               <input type="text" class="form-control">
+               <span class="input-group-btn">
+                  <button class="btn btn-default" type="button">
+                     Go!                  </button>
+               </span>
+            </div><!-- /input-group -->
+
+带有下拉菜单的按钮
+在输入框组中添加带有下拉菜单的按钮，只需要简单地在一个 .input-group-btn class  中包裹按钮和下拉菜单即可
+<div class="input-group">
+               <input type="text" class="form-control">
+               <div class="input-group-btn">
+                  <button type="button" class="btn btn-default 
+                     dropdown-toggle" data-toggle="dropdown">
+                     下拉菜单 
+                     <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu pull-right">
+                     <li><a href="#">功能</a></li>
+                     <li><a href="#">另一个功能</a></li>
+                     <li><a href="#">其他</a></li>
+                     <li class="divider"></li>
+                     <li><a href="#">分离的链接</a></li>
+                  </ul>
+               </div><!-- /btn-group -->
+            </div><!-- /input-group -->
+分割的下拉菜单按钮
+在输入框组中添加带有下拉菜单的分割按钮，使用与下拉菜单按钮大致相同的样式，但是对下拉菜单添加了主要的功能
+ <div class="input-group">
+               <input type="text" class="form-control">
+               <div class="input-group-btn">
+                  <button type="button" class="btn btn-default" 
+                     tabindex="-1">下拉菜单                  </button>
+                  <button type="button" class="btn btn-default 
+                     dropdown-toggle" data-toggle="dropdown" tabindex="-1">
+                     <span class="caret"></span>
+                     <span class="sr-only">切换下拉菜单</span>
+                  </button>
+                  <ul class="dropdown-menu pull-right">
+                     <li><a href="#">功能</a></li>
+                     <li><a href="#">另一个功能</a></li>
+                     <li><a href="#">其他</a></li>
+                     <li class="divider"></li>
+                     <li><a href="#">分离的链接</a></li>
+                  </ul>
+               </div><!-- /btn-group -->
+            </div><!-- /input-group -->
+
+Bootstrap导航元素：
+Bootstrap 提供的用于定义导航元素的一些选项。它们使用相同的标记和基类 .nav。
+Bootstrap 也提供了一个用于共享标记和状态的帮助器类。改变修饰的 class，可以在不同的样式间进行切换
+表格导航或标签
+创建一个标签式的导航菜单：
+以一个带有 class .nav 的无序列表开始。
+添加 class .nav-tabs。
+胶囊式的导航菜单
+基本的胶囊式导航菜单
+如果需要把标签改成胶囊的样式，只需要使用 class .nav-pills 代替 .nav-tabs 即可，其他的步骤与上面相同。
+垂直的胶囊式导航菜单
+可以在使用 class .nav、.nav-pills 的同时使用 class .nav-stacked，让胶囊垂直堆叠。
+两端对齐的导航
+可以在屏幕宽度大于 768px 时，通过在分别使用 .nav、.nav-tabs 或 .nav、.nav-pills 的同时使用 class .nav-justified，
+让标签式或胶囊式导航菜单与父元素等宽。在更小的屏幕上，导航链接会堆叠。
+禁用链接
+对每个 .nav class，如果添加了 .disabled class，则会创建一个灰色的链接，同时禁用了该链接的 :hover 状态
+该 class 只会改变 <a> 的外观，不会改变它的功能。在这里，您需要使用自定义的 JavaScript 来禁用链接。
+
+下拉菜单
+导航菜单与下拉菜单使用相似的语法。默认情况下，列表项的锚与一些数据属性协同合作来触发带有 .dropdown-menu class 的无序列表。
+带有下拉菜单的标签
+向标签添加下拉菜单的步骤如下：
+以一个带有 class .nav 的无序列表开始。
+添加 class .nav-tabs。
+添加带有 .dropdown-menu class 的无序列表。
+
+
+
+
+
+

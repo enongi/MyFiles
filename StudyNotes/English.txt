@@ -292,3 +292,11 @@ parnew 新式，新的
 
 durability 英 [ˌdjʊərəˈbɪlɪti]   美 [dərəˈbɪlɪti]  
 n. 耐久（用）性；经（持）久性；耐（使）用年限；寿命；强度；续（耐）航力
+
+mandatory 英 [ˈmændətəri]   美 [ˈmændətɔːri]  
+adj. 强制的;法定的;义务的
+n. 受托者
+
+nested 英 [ˈnestɪd]   美 [ˈnestɪd]  
+v. 筑巢;巢居;嵌套(信息)
+nest的过去分词和过去式

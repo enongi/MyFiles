@@ -30,53 +30,52 @@ ThreadLocal类接口很简单，只有4个方法，我们先来了解一下：
 
 **[java]** [view plain](https://blog.csdn.net/lufeng20/article/details/24314381#) [copy](https://blog.csdn.net/lufeng20/article/details/24314381#)
 
-1. **package com.test;** 
-2.  
-3. **public \**class TestNum {\**** 
-4.   // ①通过匿名内部类覆盖ThreadLocal的initialValue()方法，指定初始值 
-5.   **private \**static ThreadLocal seqNum = \*\*new ThreadLocal() {\*\**\*** 
-6. ​    **public Integer initialValue() {** 
-7. ​      **return 0;** 
-8. ​    } 
-9.   }; 
-10.  
-11.   // ②获取下一个序列值 
-12.   **public \**int getNextNum() {\**** 
-13. ​    seqNum.set(seqNum.get() + 1); 
-14. ​    **return seqNum.get();** 
-15.   } 
-16.  
-17.   **public \**static \*\*void main(String[] args) {\*\**\*** 
-18. ​    TestNum sn = **new TestNum();** 
-19. ​    // ③ 3个线程共享sn，各自产生序列号 
-20. ​    TestClient t1 = **new TestClient(sn);** 
-21. ​    TestClient t2 = **new TestClient(sn);** 
-22. ​    TestClient t3 = **new TestClient(sn);** 
-23. ​    t1.start(); 
-24. ​    t2.start(); 
-25. ​    t3.start(); 
-26.   } 
-27.  
-28.   **private \**static \*\*class TestClient \*\*extends Thread {\*\*\*\*\**** 
-29. ​    **private TestNum sn;** 
-30.  
-31. ​    **public TestClient(TestNum sn) {** 
-32. ​      **this.sn = sn;** 
-33. ​    } 
-34.  
-35. ​    **public \**void run() {\**** 
-36. ​      **for (\**int i = 0; i < 3; i++) {\**** 
-37. ​        // ④每个线程打出3个序列值 
-38. ​        System.out.println("thread[" + Thread.currentThread().getName() + "] --> sn[" 
-39. ​             \+ sn.getNextNum() + "]"); 
-40. ​      } 
-41. ​    } 
-42.   } 
-43. } 
+1. ```java
+   1. package com.test;
+   2. 
+   3. public class TestNum {
+   4. // ①通过匿名内部类覆盖ThreadLocal的initialValue()方法，指定初始值 
+   5. private static ThreadLocal seqNum = new ThreadLocal() {
+   6.     public Integer initialValue() {
+   7.       return 0;
+   8.     } 
+   9. }; 
+   10. 
+   11. // ②获取下一个序列值 
+   12. public int getNextNum() {
+   13.     seqNum.set(seqNum.get() + 1); 
+   14.     return seqNum.get(); 
+   15. } 
+   16. 
+   17. public static void main(String[] args) { 
+   18.     TestNum sn = new TestNum();
+   19.     // ③ 3个线程共享sn，各自产生序列号 
+   20.     TestClient t1 = new TestClient(sn);
+   21.     TestClient t2 = new TestClient(sn);
+   22.     TestClient t3 = new TestClient(sn);
+   23.     t1.start(); 
+   24.     t2.start(); 
+   25.     t3.start(); 
+   26. } 
+   27. 
+   28. private static class TestClient extends Thread {
+   29.     private TestNum sn;
+   30. 
+   31.     public TestClient(TestNum sn) {
+   32.       this.sn = sn;
+   33.    } 
+   34. 
+   35.     public void run() {
+   36.       for (int i = 0; i < 3; i++) {
+   37.         // ④每个线程打出3个序列值 
+   38.         System.out.println("thread[" + Thread.currentThread().getName() + "] --> sn["+ sn.getNextNum() + "]"); 
+   40.       } 
+   41.     } 
+   42. } 
+   43. } 
+   ```
 
-
-
-
+   
 
  通常我们通过匿名内部类的方式定义ThreadLocal的子类，提供初始的变量值，如例子中①处所示。TestClient线程产生一组序列号，在③处，我们生成3个TestClient，它们共享同一个TestNum实例。运行以上代码，在控制台上输出以下的结果：
 
@@ -243,23 +242,27 @@ ConnectionManager.java
 
 **[java]** [view plain](https://blog.csdn.net/lufeng20/article/details/24314381#) [copy](https://blog.csdn.net/lufeng20/article/details/24314381#)
 
-1. /** 
-2.   \* Sets the current thread's copy of this thread-local variable 
-3.   \* to the specified value. Most subclasses will have no need to 
-4.   \* override this method, relying solely on the {@link #initialValue} 
-5.   \* method to set the values of thread-locals. 
-6.   \* 
-7.   \* @param value the value to be stored in the current thread's copy of 
-8.   \*    this thread-local. 
-9.   */ 
-10.   **public \**void set(T value) {\**** 
-11. ​    Thread t = Thread.currentThread(); 
-12. ​    ThreadLocalMap map = getMap(t); 
-13. ​    **if (map != \**null)\**** 
-14. ​      map.set(**this, value);** 
-15. ​    **else** 
-16. ​      createMap(t, value); 
-17.   } 
+1. ```
+   1. /** 
+   2. \* Sets the current thread's copy of this thread-local variable 
+   3. \* to the specified value. Most subclasses will have no need to 
+   4. \* override this method, relying solely on the {@link #initialValue} 
+   5. \* method to set the values of thread-locals. 
+   6. \* 
+   7. \* @param value the value to be stored in the current thread's copy of 
+   8. \*    this thread-local. 
+   9. */ 
+   10. public void set(T value) {
+   11.     Thread t = Thread.currentThread(); 
+   12.     ThreadLocalMap map = getMap(t); 
+   13.     if (map !=null)
+   14.       map.set(this, value);
+   15.     else
+   16.       createMap(t, value); 
+   17. } 
+   ```
+
+   
 
 
 在这个方法内部我们看到，首先通过getMap(Thread t)方法获取一个和当前线程相关的ThreadLocalMap，然后将变量的值设置到这个ThreadLocalMap对象中，当然如果获取到的ThreadLocalMap对象为空，就通过createMap方法创建。
